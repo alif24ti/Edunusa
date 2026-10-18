@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootKuis"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_screen">
+
+    <!-- AppBar & Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:elevation="2dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:contentInsetEnd="16dp"
+            app:contentInsetStart="12dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- Tombol Kembali (Back Arrow) -->
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:contentDescription="Kembali"
+                    android:focusable="true"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_arrow_back"
+                    app:tint="@color/primary_navy" />
+
+                <!-- Judul Toolbar: Kuis Pecahan -->
+                <TextView
+                    android:id="@+id/tvToolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@id/btnBack"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Kuis Pecahan"
+                    android:textColor="@color/primary_navy"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Timer Badge Pill (Figma: 08:30) -->
+                <LinearLayout
+                    android:id="@+id/layoutTimer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_timer_pill"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="Timer"
+                        android:src="@drawable/ic_timer"
+                        app:tint="@color/brand_blue" />
+
+                    <TextView
+                        android:id="@+id/tvTimer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="08:30"
+                        android:textColor="@color/brand_blue"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Scrollable Content -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="96dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="18dp">
+
+            <!-- Indikator Progres Pertanyaan -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvQuestionProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="Pertanyaan 3 dari 10"
+                    android:textColor="@color/primary_navy"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/bg_badge_pill"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Pecahan"
+                    android:textColor="@color/brand_blue"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <!-- Progress Bar Kuis (3 dari 10 = 30%) -->
+            <ProgressBar
+                android:id="@+id/pbQuizProgress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="10dp"
+                android:max="10"
+                android:progress="3"
+                android:progressDrawable="@drawable/pb_rounded_brand" />
+
+            <!-- Card Pertanyaan -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/card_stroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/tvQuestionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:lineSpacingExtra="3dp"
+                        android:text="Berapakah hasil dari 1/2 + 1/4?"
+                        android:textColor="@color/primary_navy"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <!-- Formula Visual Box -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_rounded_card_light"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="½  +  ¼  =  2/4  +  1/4  =  ?"
+                            android:textColor="@color/brand_blue"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="sans-serif"
+                            android:text="Samakan penyebut 2 menjadi 4"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Pilihan Ganda Interaktif -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-bold"
+                android:text="Pilih Jawaban yang Benar:"
+                android:textColor="@color/primary_navy"
+                android:textSize="15sp" />
+
+            <!-- Opsi A: 1/4 -->
+            <LinearLayout
+                android:id="@+id/optionA"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_quiz_option_unselected"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <TextView
+                    android:id="@+id/tvLabelA"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_icon_squircle_blue"
+                    android:fontFamily="sans-serif-bold"
+                    android:gravity="center"
+                    android:text="A"
+                    android:textColor="@color/brand_blue"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionTextA"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="1 / 4"
+                    android:textColor="@color/primary_navy"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/ivCheckA"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Status"
+                    android:src="@drawable/ic_check_circle"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- Opsi B: 2/4 -->
+            <LinearLayout
+                android:id="@+id/optionB"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_quiz_option_unselected"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <TextView
+                    android:id="@+id/tvLabelB"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_icon_squircle_blue"
+                    android:fontFamily="sans-serif-bold"
+                    android:gravity="center"
+                    android:text="B"
+                    android:textColor="@color/brand_blue"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionTextB"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="2 / 4"
+                    android:textColor="@color/primary_navy"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/ivCheckB"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Status"
+                    android:src="@drawable/ic_check_circle"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- Opsi C: 3/4 (Pilihan Benar - Sesuai Figma) -->
+            <LinearLayout
+                android:id="@+id/optionC"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_quiz_option_selected"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <TextView
+                    android:id="@+id/tvLabelC"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_button_brand"
+                    android:fontFamily="sans-serif-bold"
+                    android:gravity="center"
+                    android:text="C"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionTextC"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="3 / 4"
+                    android:textColor="@color/brand_blue"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/ivCheckC"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Status"
+                    android:src="@drawable/ic_check_circle"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <!-- Opsi D: 4/4 -->
+            <LinearLayout
+                android:id="@+id/optionD"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_quiz_option_unselected"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <TextView
+                    android:id="@+id/tvLabelD"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_icon_squircle_blue"
+                    android:fontFamily="sans-serif-bold"
+                    android:gravity="center"
+                    android:text="D"
+                    android:textColor="@color/brand_blue"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionTextD"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="4 / 4"
+                    android:textColor="@color/primary_navy"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/ivCheckD"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Status"
+                    android:src="@drawable/ic_check_circle"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- Tips Pintar Card (Figma) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_badge_yellow"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Tips"
+                    android:src="@drawable/ic_lightbulb" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:text="Tips Pintar: Samakan penyebut terlebih dahulu sebelum menjumlahkan pembilang: 1/2 = 2/4, jadi 2/4 + 1/4 = 3/4."
+                    android:textColor="@color/accent_yellow"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Action Row: Bookmark & Lanjut Button (Fixed at Bottom) -->
+    <LinearLayout
+        android:id="@+id/layoutBottomQuiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:elevation="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="14dp">
+
+        <!-- Bookmark Icon Button -->
+        <ImageView
+            android:id="@+id/btnBookmark"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_rounded_card"
+            android:clickable="true"
+            android:contentDescription="Simpan Soal"
+            android:focusable="true"
+            android:padding="12dp"
+            android:src="@drawable/ic_bookmark" />
+
+        <!-- Tombol Lanjut -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNextQuestion"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="14dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/brand_blue"
+            android:fontFamily="sans-serif-bold"
+            android:text="Lanjut  →"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="26dp"
+            app:elevation="3dp" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

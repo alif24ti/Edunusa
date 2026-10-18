@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">EduNusa</string>
+    <string name="app_tagline">Belajar Mudah, Berkembang Bersama</string>
+    <string name="app_subtitle">Pendidikan Digital</string>
+
+    <!-- Splash & Login -->
+    <string name="login_welcome_title">Selamat Datang!</string>
+    <string name="login_welcome_subtitle">Masuk untuk melanjutkan pembelajaranmu</string>
+    <string name="username_label">Username</string>
+    <string name="username_hint">Masukkan username</string>
+    <string name="password_label">Password</string>
+    <string name="password_hint">Masukkan password</string>
+    <string name="btn_login_text">Masuk</string>
+    <string name="demo_credentials_hint">Akun Demo: Username: admin | Password: 12345</string>
+
+    <!-- Main / Beranda -->
+    <string name="greeting_tag">👋 Semangat Pagi!</string>
+    <string name="greeting_student">Halo, Siswa!</string>
+    <string name="greeting_sub">Siap belajar hal baru hari ini?</string>
+    <string name="learning_today">Belajar Hari Ini</string>
+    <string name="learning_target">Target harian: 30 menit</string>
+    <string name="learning_progress_desc">18 dari 30 menit tercapai</string>
+    <string name="section_continue_title">Lanjutkan Belajar</string>
+    <string name="module_tag_math">Modul 3 • 15 Menit</string>
+    <string name="tag_pecahan">Pecahan</string>
+    <string name="course_math_title">Matematika: Pecahan Sederhana</string>
+    <string name="course_math_desc">Pelajari konsep pecahan dasar, menyamakan penyebut, hingga operasi hitung pecahan.</string>
+    <string name="progress_submodule_label">Progres Sub-Modul</string>
+    <string name="progress_submodule_val">4 dari 6 Selesai</string>
+    <string name="btn_continue_learning">Lanjutkan Belajar</string>
+    <string name="section_subjects_title">Mata Pelajaran</string>
+    <string name="see_all">Lihat Semua</string>
+    <string name="subject_math_title">Matematika</string>
+    <string name="subject_math_count">18 Modul • 12 Kuis</string>
+    <string name="subject_indo_title">Bahasa Indonesia</string>
+    <string name="subject_indo_count">14 Modul • 10 Kuis</string>
+    <string name="subject_ipa_title">IPA (Ilmu Pengetahuan Alam)</string>
+    <string name="subject_ipa_count">22 Modul • 16 Kuis</string>
+    <string name="action_logout">Logout</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_beranda">Beranda</string>
+    <string name="nav_kelas">Kelas</string>
+    <string name="nav_progres">Progres</string>
+    <string name="nav_profil">Profil</string>
+</resources>
