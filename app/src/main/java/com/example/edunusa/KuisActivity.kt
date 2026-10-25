@@ -1,6 +1,8 @@
 package com.example.edunusa
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -9,44 +11,46 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.edunusa.databinding.ActivityKuisBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class KuisActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityKuisBinding
-    private var selectedOption: String = "C"
+    private var selectedOption: String = "C" // Sesuai desain Figma Screen 4, C dipilih secara default
     private var isBookmarked: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Mengaktifkan Edge-to-Edge
         enableEdgeToEdge()
 
-        // Menerapkan ViewBinding secara penuh tanpa findViewById
         binding = ActivityKuisBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Penanganan WindowInsets agar Toolbar tidak tertutup status bar
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.rootKuis) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
 
-        // Tombol Kembali (Back) di Toolbar
-        binding.btnBack.setOnClickListener {
-            finish()
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+            title = "Kuis Pecahan"
         }
 
-        // Inisialisasi tampilan pilihan ganda awal
+
         selectOption("C")
 
-        // Listener untuk setiap pilihan ganda
+
         binding.optionA.setOnClickListener { selectOption("A") }
         binding.optionB.setOnClickListener { selectOption("B") }
         binding.optionC.setOnClickListener { selectOption("C") }
         binding.optionD.setOnClickListener { selectOption("D") }
 
-        // Tombol Bookmark
+
         binding.btnBookmark.setOnClickListener {
             isBookmarked = !isBookmarked
             if (isBookmarked) {
@@ -58,23 +62,36 @@ class KuisActivity : AppCompatActivity() {
             }
         }
 
-        // Tombol Lanjut (Evaluasi Kuis)
+
         binding.btnNextQuestion.setOnClickListener {
-            if (selectedOption == "C") {
-                Toast.makeText(this, "Jawaban Benar! (3/4). Poin +100!", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(this, "Jawaban kamu belum tepat. Kunci jawaban: C (3/4)", Toast.LENGTH_LONG).show()
-            }
+            evaluasiJawaban()
+        }
+    }
+
+    private fun evaluasiJawaban() {
+        if (selectedOption == "C") {
+            MaterialAlertDialogBuilder(this)
+                .setTitle("Jawaban Benar! 🎉")
+                .setMessage("Hebat! 1/2 + 1/4 = 2/4 + 1/4 = 3/4. Kamu mendapatkan +100 Poin Belajar!")
+                .setPositiveButton("Selesai & Kembali") { dialog, _ ->
+                    dialog.dismiss()
+                    finish()
+                }
+                .setCancelable(false)
+                .show()
+        } else {
+            MaterialAlertDialogBuilder(this)
+                .setTitle("Jawaban Belum Tepat")
+                .setMessage("Jawaban yang kamu pilih belum tepat. Petunjuk: Samakan penyebut pecahan menjadi 4, sehingga 2/4 + 1/4 = 3/4 (Pilihan C).")
+                .setPositiveButton("Coba Lagi") { dialog, _ -> dialog.dismiss() }
+                .show()
         }
     }
 
     private fun selectOption(option: String) {
         selectedOption = option
-
-        // Reset semua opsi ke keadaan normal (unselected)
         resetOptions()
 
-        // Terapkan style aktif ke opsi yang dipilih
         when (option) {
             "A" -> {
                 binding.optionA.setBackgroundResource(R.drawable.bg_quiz_option_selected)
@@ -136,5 +153,37 @@ class KuisActivity : AppCompatActivity() {
         binding.tvLabelD.setBackgroundResource(labelBg)
         binding.tvLabelD.setTextColor(blueColor)
         binding.ivCheckD.visibility = View.GONE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.kuis_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                true
+            }
+            R.id.action_draft -> {
+                Toast.makeText(this, "Jawaban kuis sementara disimpan sebagai draf", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_guide -> {
+                MaterialAlertDialogBuilder(this)
+                    .setTitle("Panduan Kuis Pecahan")
+                    .setMessage("1. Waktu pengerjaan maksimal 10 menit.\n2. Pilih salah satu jawaban A, B, C, atau D.\n3. Tekan Lanjut untuk menyelesaikan dan melihat skor.")
+                    .setPositiveButton("Mengerti") { dialog, _ -> dialog.dismiss() }
+                    .show()
+                true
+            }
+            R.id.action_reset -> {
+                selectOption("A")
+                Toast.makeText(this, "Pilihan jawaban direset ke Opsi A", Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -3,7 +3,7 @@
     <string name="app_tagline">Belajar Mudah, Berkembang Bersama</string>
     <string name="app_subtitle">Pendidikan Digital</string>
 
-    <!-- Splash & Login -->
+
     <string name="login_welcome_title">Selamat Datang!</string>
     <string name="login_welcome_subtitle">Masuk untuk melanjutkan pembelajaranmu</string>
     <string name="username_label">Username</string>
@@ -13,7 +13,7 @@
     <string name="btn_login_text">Masuk</string>
     <string name="demo_credentials_hint">Akun Demo: Username: admin | Password: 12345</string>
 
-    <!-- Main / Beranda -->
+
     <string name="greeting_tag">👋 Semangat Pagi!</string>
     <string name="greeting_student">Halo, Siswa!</string>
     <string name="greeting_sub">Siap belajar hal baru hari ini?</string>
@@ -38,7 +38,7 @@
     <string name="subject_ipa_count">22 Modul • 16 Kuis</string>
     <string name="action_logout">Logout</string>
 
-    <!-- Bottom Navigation -->
+
     <string name="nav_beranda">Beranda</string>
     <string name="nav_kelas">Kelas</string>
     <string name="nav_progres">Progres</string>

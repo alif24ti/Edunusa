@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/bg_screen">
 
-    <!-- AppBar & Toolbar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
@@ -20,49 +19,49 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
-            app:contentInsetEnd="16dp"
-            app:contentInsetStart="12dp">
+            app:popupTheme="@style/ThemeOverlay.Material3.Light"
+            app:title="Kuis Pecahan"
+            app:titleTextColor="@color/primary_navy" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-            <RelativeLayout
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="96dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="18dp">
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <!-- Tombol Kembali (Back Arrow) -->
-                <ImageView
-                    android:id="@+id/btnBack"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:contentDescription="Kembali"
-                    android:focusable="true"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_arrow_back"
-                    app:tint="@color/primary_navy" />
-
-                <!-- Judul Toolbar: Kuis Pecahan -->
                 <TextView
-                    android:id="@+id/tvToolbarTitle"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvQuestionProgress"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_toEndOf="@id/btnBack"
-                    android:fontFamily="sans-serif-black"
-                    android:text="Kuis Pecahan"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="Pertanyaan 3 dari 10 (30%)"
                     android:textColor="@color/primary_navy"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp" />
 
-                <!-- Timer Badge Pill (Figma: 08:30) -->
+
                 <LinearLayout
                     android:id="@+id/layoutTimer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
                     android:background="@drawable/bg_timer_pill"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
@@ -86,53 +85,9 @@
                         android:textColor="@color/brand_blue"
                         android:textSize="13sp" />
                 </LinearLayout>
+            </LinearLayout>
 
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Scrollable Content -->
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="96dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingTop="18dp">
-
-            <!-- Indikator Progres Pertanyaan -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvQuestionProgress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-bold"
-                    android:text="Pertanyaan 3 dari 10"
-                    android:textColor="@color/primary_navy"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:background="@drawable/bg_badge_pill"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Pecahan"
-                    android:textColor="@color/brand_blue"
-                    android:textSize="11sp" />
-            </RelativeLayout>
-
-            <!-- Progress Bar Kuis (3 dari 10 = 30%) -->
             <ProgressBar
                 android:id="@+id/pbQuizProgress"
                 style="@android:style/Widget.ProgressBar.Horizontal"
@@ -143,12 +98,12 @@
                 android:progress="3"
                 android:progressDrawable="@drawable/pb_rounded_brand" />
 
-            <!-- Card Pertanyaan -->
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="2dp"
@@ -162,9 +117,20 @@
                     android:padding="20dp">
 
                     <TextView
+                        android:id="@+id/tvQuestionBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_badge_pill"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="Matematika Dasar • Pecahan"
+                        android:textColor="@color/brand_blue"
+                        android:textSize="11sp" />
+
+                    <TextView
                         android:id="@+id/tvQuestionText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="sans-serif-black"
                         android:lineSpacingExtra="3dp"
                         android:text="Berapakah hasil dari 1/2 + 1/4?"
@@ -172,7 +138,7 @@
                         android:textSize="19sp"
                         android:textStyle="bold" />
 
-                    <!-- Formula Visual Box -->
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -180,22 +146,80 @@
                         android:background="@drawable/bg_rounded_card_light"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="14dp">
+                        android:padding="16dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-bold"
+                            android:fontFamily="sans-serif-black"
                             android:text="½  +  ¼  =  2/4  +  1/4  =  ?"
                             android:textColor="@color/brand_blue"
-                            android:textSize="17sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="34dp"
+                                android:layout_height="34dp"
+                                android:background="@drawable/bg_icon_squircle_blue"
+                                android:fontFamily="sans-serif-bold"
+                                android:gravity="center"
+                                android:text="½"
+                                android:textColor="@color/brand_blue"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="10dp"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="+"
+                                android:textColor="@color/primary_navy"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="34dp"
+                                android:layout_height="34dp"
+                                android:background="@drawable/bg_icon_squircle_blue"
+                                android:fontFamily="sans-serif-bold"
+                                android:gravity="center"
+                                android:text="¼"
+                                android:textColor="@color/brand_blue"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="10dp"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="="
+                                android:textColor="@color/primary_navy"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="34dp"
+                                android:layout_height="34dp"
+                                android:background="@drawable/bg_icon_squircle_green"
+                                android:fontFamily="sans-serif-bold"
+                                android:gravity="center"
+                                android:text="?"
+                                android:textColor="@color/success_green"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="8dp"
                             android:fontFamily="sans-serif"
-                            android:text="Samakan penyebut 2 menjadi 4"
+                            android:text="Petunjuk: Samakan penyebut 2 menjadi 4"
                             android:textColor="@color/text_secondary"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -203,17 +227,17 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Pilihan Ganda Interaktif -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-bold"
-                android:text="Pilih Jawaban yang Benar:"
+                android:text="Pilihan Jawaban:"
                 android:textColor="@color/primary_navy"
                 android:textSize="15sp" />
 
-            <!-- Opsi A: 1/4 -->
+
             <LinearLayout
                 android:id="@+id/optionA"
                 android:layout_width="match_parent"
@@ -257,7 +281,7 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-            <!-- Opsi B: 2/4 -->
+
             <LinearLayout
                 android:id="@+id/optionB"
                 android:layout_width="match_parent"
@@ -301,7 +325,7 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-            <!-- Opsi C: 3/4 (Pilihan Benar - Sesuai Figma) -->
+
             <LinearLayout
                 android:id="@+id/optionC"
                 android:layout_width="match_parent"
@@ -345,7 +369,7 @@
                     android:visibility="visible" />
             </LinearLayout>
 
-            <!-- Opsi D: 4/4 -->
+
             <LinearLayout
                 android:id="@+id/optionD"
                 android:layout_width="match_parent"
@@ -389,7 +413,7 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-            <!-- Tips Pintar Card (Figma) -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -412,14 +436,14 @@
                     android:layout_weight="1"
                     android:fontFamily="sans-serif"
                     android:text="Tips Pintar: Samakan penyebut terlebih dahulu sebelum menjumlahkan pembilang: 1/2 = 2/4, jadi 2/4 + 1/4 = 3/4."
-                    android:textColor="@color/accent_yellow"
+                    android:textColor="@color/warning_orange"
                     android:textSize="12sp" />
             </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Action Row: Bookmark & Lanjut Button (Fixed at Bottom) -->
+
     <LinearLayout
         android:id="@+id/layoutBottomQuiz"
         android:layout_width="match_parent"
@@ -432,7 +456,7 @@
         android:paddingHorizontal="20dp"
         android:paddingVertical="14dp">
 
-        <!-- Bookmark Icon Button -->
+
         <ImageView
             android:id="@+id/btnBookmark"
             android:layout_width="48dp"
@@ -444,7 +468,7 @@
             android:padding="12dp"
             android:src="@drawable/ic_bookmark" />
 
-        <!-- Tombol Lanjut -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNextQuestion"
             android:layout_width="0dp"

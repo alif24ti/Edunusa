@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Izin Akses Internet untuk Glide & API -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,9 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Edunusa">
 
-        <!-- Splash Screen sebagai Main Launcher -->
+        <!-- 1. SplashScreenActivity sebagai Main Launcher -->
         <activity
-            android:name=".SplashActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,33 +25,26 @@
             </intent-filter>
         </activity>
 
-        <!-- Halaman Login -->
+        <!-- 2. LoginActivity -->
         <activity
             android:name=".LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- Halaman Utama / Beranda -->
+        <!-- 3. BaseActivity (Container 4 Fragment Utama) -->
         <activity
-            android:name=".MainActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:name=".BaseActivity"
+            android:exported="false" />
 
-        <!-- Halaman Detail Materi -->
+        <!-- 4. DetailMateriActivity -->
         <activity
             android:name=".DetailMateriActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- Halaman Kuis -->
+        <!-- 5. KuisActivity -->
         <activity
             android:name=".KuisActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-
-        <!-- Halaman Profil Siswa -->
-        <activity
-            android:name=".ProfilActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 

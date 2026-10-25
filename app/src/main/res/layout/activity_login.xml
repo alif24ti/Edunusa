@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="24dp">
 
-        <!-- Top Header Card / Logo Section -->
+
         <LinearLayout
             android:id="@+id/layoutHeader"
             android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Form Card Container -->
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardLoginForm"
             android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <!-- Label Username -->
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                     android:textColor="@color/primary_navy"
                     android:textSize="14sp" />
 
-                <!-- Input Username -->
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilUsername"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -121,7 +121,7 @@
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Label Password -->
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
                     android:textColor="@color/primary_navy"
                     android:textSize="14sp" />
 
-                <!-- Input Password -->
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilPassword"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -163,7 +163,7 @@
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Tombol Masuk -->
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnLogin"
                     android:layout_width="match_parent"

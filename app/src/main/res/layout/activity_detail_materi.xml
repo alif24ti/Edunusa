@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_screen">
 
-    <!-- AppBar & Toolbar -->
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
@@ -20,57 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
-            app:contentInsetEnd="16dp"
-            app:contentInsetStart="12dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <!-- Tombol Kembali (Back Arrow) -->
-                <ImageView
-                    android:id="@+id/btnBack"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:contentDescription="Kembali"
-                    android:focusable="true"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_arrow_back"
-                    app:tint="@color/primary_navy" />
-
-                <!-- Judul Toolbar: Detail Materi -->
-                <TextView
-                    android:id="@+id/tvToolbarTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_toEndOf="@id/btnBack"
-                    android:fontFamily="sans-serif-black"
-                    android:text="Detail Materi"
-                    android:textColor="@color/primary_navy"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <!-- Right Avatar Icon -->
-                <ImageView
-                    android:id="@+id/ivDetailAvatar"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:contentDescription="Avatar"
-                    android:src="@drawable/ic_student_avatar" />
-
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
+            app:popupTheme="@style/ThemeOverlay.Material3.Light"
+            app:title="Detail Materi"
+            app:titleTextColor="@color/primary_navy" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Scrollable Content -->
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
@@ -86,7 +41,7 @@
             android:paddingHorizontal="20dp"
             android:paddingTop="18dp">
 
-            <!-- Badges Row -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,11 +66,11 @@
                     android:background="@drawable/bg_badge_yellow"
                     android:fontFamily="sans-serif-medium"
                     android:text="Modul 03 dari 12"
-                    android:textColor="@color/accent_yellow"
+                    android:textColor="@color/warning_orange"
                     android:textSize="12sp" />
             </LinearLayout>
 
-            <!-- Judul Materi -->
+
             <TextView
                 android:id="@+id/tvMaterialTitle"
                 android:layout_width="match_parent"
@@ -127,7 +82,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <!-- Subtitle Materi -->
+
             <TextView
                 android:id="@+id/tvMaterialSubtitle"
                 android:layout_width="match_parent"
@@ -139,7 +94,7 @@
                 android:textColor="@color/text_secondary"
                 android:textSize="14sp" />
 
-            <!-- Metadata Info Row -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -148,6 +103,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tvDurationDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
@@ -156,6 +112,7 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tvLevelDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
@@ -165,21 +122,42 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tvRatingDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="📚 3 Sub-Materi"
-                    android:textColor="@color/text_secondary"
+                    android:text="★ 4.9"
+                    android:textColor="@color/warning_orange"
                     android:textSize="12sp" />
             </LinearLayout>
 
-            <!-- Card 1: Visualisasi Model Pecahan (Figma) -->
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardBannerMateri"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/card_stroke"
+                app:strokeWidth="1dp">
+
+                <ImageView
+                    android:id="@+id/imgDetailBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Banner Materi"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo_edunusa" />
+            </com.google.android.material.card.MaterialCardView>
+
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardVisualModel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="2dp"
@@ -209,12 +187,11 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:fontFamily="sans-serif-medium"
-                            android:text="Eksplorasi"
+                            android:text="Ketuk untuk Eksplor"
                             android:textColor="@color/brand_blue"
                             android:textSize="12sp" />
                     </RelativeLayout>
 
-                    <!-- Row Dua Model: 1/2 dan 1/4 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -222,7 +199,7 @@
                         android:baselineAligned="false"
                         android:orientation="horizontal">
 
-                        <!-- Kotak Model 1: 1/2 -->
+
                         <LinearLayout
                             android:id="@+id/layoutModelHalf"
                             android:layout_width="0dp"
@@ -267,7 +244,7 @@
                                 android:textSize="11sp" />
                         </LinearLayout>
 
-                        <!-- Kotak Model 2: 1/4 -->
+
                         <LinearLayout
                             android:id="@+id/layoutModelQuarter"
                             android:layout_width="0dp"
@@ -327,7 +304,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card 2: Section Tentang Materi -->
+            <!-- Card 2: Section Tentang Materi & Analogi Mudah -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -354,6 +331,7 @@
                     android:padding="16dp">
 
                     <TextView
+                        android:id="@+id/tvAboutDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
@@ -374,14 +352,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
-                            android:text="🍕 Analogi Pizza EduNusa: Memotong pizza secara merata adalah cara paling asyik dan mudah memahami konsep pecahan."
-                            android:textColor="@color/accent_yellow"
+                            android:text="🍕 Analogi Mudah: Memotong pizza secara rata adalah cara paling asyik dan mudah memahami pecahan."
+                            android:textColor="@color/warning_orange"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card 3: Video Pembelajaran (Figma) -->
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -421,7 +399,6 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_video_card">
 
-                    <!-- Play Button Circle Overlay -->
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/btnPlayVideo"
                         android:layout_width="56dp"
@@ -439,7 +416,6 @@
                             android:src="@drawable/ic_play_arrow" />
                     </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Video Details Banner at Bottom -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -449,6 +425,7 @@
                         android:padding="12dp">
 
                         <TextView
+                            android:id="@+id/tvVideoTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-bold"
@@ -468,7 +445,7 @@
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card 4: Yang Akan Dipelajari -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -494,7 +471,6 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <!-- Point 1 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -518,7 +494,6 @@
                             android:textSize="13sp" />
                     </LinearLayout>
 
-                    <!-- Point 2 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -543,7 +518,6 @@
                             android:textSize="13sp" />
                     </LinearLayout>
 
-                    <!-- Point 3 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -567,14 +541,80 @@
                             android:textColor="@color/primary_navy"
                             android:textSize="13sp" />
                     </LinearLayout>
-
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardKomunitas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="1dp"
+                app:strokeColor="@color/card_stroke"
+                app:strokeWidth="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp">
+
+                    <ImageView
+                        android:id="@+id/imgKomunitas"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="Avatar"
+                        android:src="@drawable/ic_student_avatar" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toStartOf="@id/btnSapa"
+                        android:layout_toEndOf="@id/imgKomunitas"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="42 Siswa Sedang Belajar"
+                            android:textColor="@color/primary_navy"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="sans-serif"
+                            android:text="Bergabung dengan diskusi dan tanya guru"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSapa"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text="Sapa"
+                        android:textColor="@color/brand_blue"
+                        android:textSize="12sp"
+                        app:cornerRadius="19dp"
+                        app:strokeColor="@color/brand_blue" />
+                </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Action Button Container (Fixed at bottom) -->
+
     <LinearLayout
         android:id="@+id/layoutBottomAction"
         android:layout_width="match_parent"
