@@ -28,7 +28,7 @@ class SplashScreenActivity : AppCompatActivity() {
             insets
         }
 
-        // Coroutines lifecycleScope sesuai materi wajib dosen
+
         lifecycleScope.launch {
             delay(2000)
             val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
