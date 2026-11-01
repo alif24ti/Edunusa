@@ -40,7 +40,6 @@ class ProfilFragment : Fragment() {
         (requireActivity() as? AppCompatActivity)?.setSupportActionBar(binding.toolbar)
         (requireActivity() as? AppCompatActivity)?.supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        // Setup MenuProvider Resmi Dosen
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.profil_menu, menu)
@@ -75,15 +74,12 @@ class ProfilFragment : Fragment() {
             showLogoutDialog()
         }
 
-
-        val sharedPref = requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+val sharedPref = requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val username = sharedPref.getString("username", "Siswa") ?: "Siswa"
 
+binding.tvAvatar.text = if (username.length >= 2) username.take(2).uppercase() else username.uppercase()
 
-        binding.tvAvatar.text = if (username.length >= 2) username.take(2).uppercase() else username.uppercase()
-
-
-        binding.tvProfileName.text = username
+binding.tvProfileName.text = username
         binding.tvUsernameValue.text = username
         val cleanEmail = "${username.lowercase().replace("\\s+".toRegex(), "")}@edunusa.sch.id"
         binding.tvEmailValue.text = cleanEmail
@@ -103,8 +99,7 @@ class ProfilFragment : Fragment() {
             startActivity(intent)
         }
 
-
-        binding.btnLogoutProfile.setOnClickListener {
+binding.btnLogoutProfile.setOnClickListener {
             showLogoutDialog()
         }
     }

@@ -24,8 +24,7 @@
             app:titleTextColor="@color/primary_navy" />
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <androidx.core.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,8 +39,7 @@
             android:paddingHorizontal="20dp"
             android:paddingTop="18dp">
 
-
-            <LinearLayout
+<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -57,8 +55,7 @@
                     android:textColor="@color/primary_navy"
                     android:textSize="14sp" />
 
-
-                <LinearLayout
+<LinearLayout
                     android:id="@+id/layoutTimer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,8 +84,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-
-            <ProgressBar
+<ProgressBar
                 android:id="@+id/pbQuizProgress"
                 style="@android:style/Widget.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
@@ -98,8 +94,7 @@
                 android:progress="3"
                 android:progressDrawable="@drawable/pb_rounded_brand" />
 
-
-            <com.google.android.material.card.MaterialCardView
+<com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,8 +133,7 @@
                         android:textSize="19sp"
                         android:textStyle="bold" />
 
-
-                    <LinearLayout
+<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -157,8 +151,7 @@
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
-
-                        <LinearLayout
+<LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -227,8 +220,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
-            <TextView
+<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -237,8 +229,7 @@
                 android:textColor="@color/primary_navy"
                 android:textSize="15sp" />
 
-
-            <LinearLayout
+<LinearLayout
                 android:id="@+id/optionA"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -281,8 +272,7 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-
-            <LinearLayout
+<LinearLayout
                 android:id="@+id/optionB"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -325,8 +315,7 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-
-            <LinearLayout
+<LinearLayout
                 android:id="@+id/optionC"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -369,8 +358,7 @@
                     android:visibility="visible" />
             </LinearLayout>
 
-
-            <LinearLayout
+<LinearLayout
                 android:id="@+id/optionD"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -413,8 +401,7 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-
-            <LinearLayout
+<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -443,8 +430,7 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-
-    <LinearLayout
+<LinearLayout
         android:id="@+id/layoutBottomQuiz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -456,8 +442,7 @@
         android:paddingHorizontal="20dp"
         android:paddingVertical="14dp">
 
-
-        <ImageView
+<ImageView
             android:id="@+id/btnBookmark"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -468,8 +453,7 @@
             android:padding="12dp"
             android:src="@drawable/ic_bookmark" />
 
-
-        <com.google.android.material.button.MaterialButton
+<com.google.android.material.button.MaterialButton
             android:id="@+id/btnNextQuestion"
             android:layout_width="0dp"
             android:layout_height="52dp"

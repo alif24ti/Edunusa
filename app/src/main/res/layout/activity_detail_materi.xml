@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_screen">
 
-
-    <com.google.android.material.appbar.AppBarLayout
+<com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,8 +24,7 @@
             app:titleTextColor="@color/primary_navy" />
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <androidx.core.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,8 +39,7 @@
             android:paddingHorizontal="20dp"
             android:paddingTop="18dp">
 
-
-            <LinearLayout
+<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -70,8 +67,7 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
-
-            <TextView
+<TextView
                 android:id="@+id/tvMaterialTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,8 +78,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-
-            <TextView
+<TextView
                 android:id="@+id/tvMaterialSubtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,8 +89,7 @@
                 android:textColor="@color/text_secondary"
                 android:textSize="14sp" />
 
-
-            <LinearLayout
+<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -132,8 +126,7 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
-
-            <com.google.android.material.card.MaterialCardView
+<com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardBannerMateri"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
@@ -152,8 +145,7 @@
                     android:src="@drawable/logo_edunusa" />
             </com.google.android.material.card.MaterialCardView>
 
-
-            <com.google.android.material.card.MaterialCardView
+<com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardVisualModel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -199,8 +191,7 @@
                         android:baselineAligned="false"
                         android:orientation="horizontal">
 
-
-                        <LinearLayout
+<LinearLayout
                             android:id="@+id/layoutModelHalf"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -244,8 +235,7 @@
                                 android:textSize="11sp" />
                         </LinearLayout>
 
-
-                        <LinearLayout
+<LinearLayout
                             android:id="@+id/layoutModelQuarter"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -304,7 +294,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card 2: Section Tentang Materi & Analogi Mudah -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -359,8 +348,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
-            <RelativeLayout
+<RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp">
@@ -445,8 +433,7 @@
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
-            <TextView
+<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
@@ -544,8 +531,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
-            <com.google.android.material.card.MaterialCardView
+<com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardKomunitas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -614,8 +600,7 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-
-    <LinearLayout
+<LinearLayout
         android:id="@+id/layoutBottomAction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

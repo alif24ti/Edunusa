@@ -29,8 +29,7 @@ class DetailMateriActivity : AppCompatActivity() {
             insets
         }
 
-
-        setSupportActionBar(binding.toolbar)
+setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
@@ -38,8 +37,7 @@ class DetailMateriActivity : AppCompatActivity() {
             title = "Detail Materi"
         }
 
-
-        val subject = intent.getStringExtra("EXTRA_SUBJECT") ?: "Matematika"
+val subject = intent.getStringExtra("EXTRA_SUBJECT") ?: "Matematika"
         val modul = intent.getStringExtra("EXTRA_MODUL") ?: "Modul 03 dari 12"
         val title = intent.getStringExtra("EXTRA_TITLE") ?: "Pecahan Sederhana"
         val desc = intent.getStringExtra("EXTRA_DESC") ?: "Pelajari konsep pecahan dasar, menyamakan penyebut, hingga operasi hitung pecahan."
@@ -48,8 +46,7 @@ class DetailMateriActivity : AppCompatActivity() {
         val rating = intent.getDoubleExtra("EXTRA_RATING", 4.9)
         val imageUrl = intent.getStringExtra("EXTRA_IMAGE_URL") ?: ""
 
-
-        binding.badgeSubject.text = subject
+binding.badgeSubject.text = subject
         binding.badgeModuleNumber.text = modul
         binding.tvMaterialTitle.text = title
         binding.tvMaterialSubtitle.text = desc
@@ -57,8 +54,7 @@ class DetailMateriActivity : AppCompatActivity() {
         binding.tvLevelDetail.text = "🏫 $level"
         binding.tvRatingDetail.text = "★ $rating"
 
-
-        if (imageUrl.isNotEmpty()) {
+if (imageUrl.isNotEmpty()) {
             Glide.with(this)
                 .load(imageUrl)
                 .placeholder(R.drawable.logo_edunusa)
@@ -70,8 +66,7 @@ class DetailMateriActivity : AppCompatActivity() {
                 .into(binding.imgDetailBanner)
         }
 
-
-        binding.layoutModelHalf.setOnClickListener {
+binding.layoutModelHalf.setOnClickListener {
             Toast.makeText(this, "Model Pecahan 1/2: 1 bagian utuh dibagi rata menjadi 2", Toast.LENGTH_SHORT).show()
         }
 
@@ -79,18 +74,15 @@ class DetailMateriActivity : AppCompatActivity() {
             Toast.makeText(this, "Model Pecahan 1/4: 1 bagian utuh dibagi rata menjadi 4", Toast.LENGTH_SHORT).show()
         }
 
-
-        binding.btnPlayVideo.setOnClickListener {
+binding.btnPlayVideo.setOnClickListener {
             Toast.makeText(this, "Memutar video pembelajaran '$title'...", Toast.LENGTH_SHORT).show()
         }
 
-
-        binding.btnSapa.setOnClickListener {
+binding.btnSapa.setOnClickListener {
             Toast.makeText(this, "Kamu menyapa 42 siswa di ruang belajar!", Toast.LENGTH_SHORT).show()
         }
 
-
-        binding.btnStartQuiz.setOnClickListener {
+binding.btnStartQuiz.setOnClickListener {
             val quizIntent = Intent(this, KuisActivity::class.java).apply {
                 putExtra("EXTRA_SUBJECT", subject)
                 putExtra("EXTRA_TITLE", title)

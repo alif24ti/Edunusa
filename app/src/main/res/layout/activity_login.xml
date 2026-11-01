@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="24dp">
 
-
-        <LinearLayout
+<LinearLayout
             android:id="@+id/layoutHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,8 +62,7 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-
-        <com.google.android.material.card.MaterialCardView
+<com.google.android.material.card.MaterialCardView
             android:id="@+id/cardLoginForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,8 +80,7 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-
-                <TextView
+<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
@@ -91,8 +88,7 @@
                     android:textColor="@color/primary_navy"
                     android:textSize="14sp" />
 
-
-                <com.google.android.material.textfield.TextInputLayout
+<com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilUsername"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -121,8 +117,7 @@
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-
-                <TextView
+<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -131,8 +126,7 @@
                     android:textColor="@color/primary_navy"
                     android:textSize="14sp" />
 
-
-                <com.google.android.material.textfield.TextInputLayout
+<com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilPassword"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -163,8 +157,7 @@
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-
-                <com.google.android.material.button.MaterialButton
+<com.google.android.material.button.MaterialButton
                     android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
                     android:layout_height="54dp"

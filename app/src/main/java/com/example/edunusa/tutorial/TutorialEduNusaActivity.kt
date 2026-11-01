@@ -5,7 +5,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 import com.example.edunusa.databinding.ActivityTutorialEdunusaBinding
 
 class TutorialEduNusaActivity : AppCompatActivity() {
@@ -25,21 +27,17 @@ class TutorialEduNusaActivity : AppCompatActivity() {
             insets
         }
 
-        // Siapkan 3 Fragment Tutorial EduNusa
         val tutorialFragments = listOf(
             Tutorial1Fragment(),
             Tutorial2Fragment(),
             Tutorial3Fragment()
         )
 
-        // Setup Adapter ViewPager2
         val adapter = TutorialFragmentAdapter(this, tutorialFragments)
         binding.viewPagerTutorial.adapter = adapter
 
-        // Hubungkan DotsIndicator dengan ViewPager2
         binding.dotsIndicator.attachTo(binding.viewPagerTutorial)
 
-        // Listener perpindahan halaman
         binding.viewPagerTutorial.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -51,7 +49,6 @@ class TutorialEduNusaActivity : AppCompatActivity() {
             }
         })
 
-        // Tombol Lanjut / Mulai Belajar
         binding.btnNextTutorial.setOnClickListener {
             val currentItem = binding.viewPagerTutorial.currentItem
             if (currentItem < tutorialFragments.size - 1) {
@@ -61,7 +58,6 @@ class TutorialEduNusaActivity : AppCompatActivity() {
             }
         }
 
-        // Tombol Lewati & Kembali
         binding.btnSkipTutorial.setOnClickListener {
             finish()
         }

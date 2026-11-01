@@ -16,7 +16,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class KuisActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityKuisBinding
-    private var selectedOption: String = "C" // Sesuai desain Figma Screen 4, C dipilih secara default
+    private var selectedOption: String = "C"
     private var isBookmarked: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +32,7 @@ class KuisActivity : AppCompatActivity() {
             insets
         }
 
-
-        setSupportActionBar(binding.toolbar)
+setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
@@ -41,17 +40,14 @@ class KuisActivity : AppCompatActivity() {
             title = "Kuis Pecahan"
         }
 
+selectOption("C")
 
-        selectOption("C")
-
-
-        binding.optionA.setOnClickListener { selectOption("A") }
+binding.optionA.setOnClickListener { selectOption("A") }
         binding.optionB.setOnClickListener { selectOption("B") }
         binding.optionC.setOnClickListener { selectOption("C") }
         binding.optionD.setOnClickListener { selectOption("D") }
 
-
-        binding.btnBookmark.setOnClickListener {
+binding.btnBookmark.setOnClickListener {
             isBookmarked = !isBookmarked
             if (isBookmarked) {
                 binding.btnBookmark.setColorFilter(ContextCompat.getColor(this, R.color.brand_blue))
@@ -62,8 +58,7 @@ class KuisActivity : AppCompatActivity() {
             }
         }
 
-
-        binding.btnNextQuestion.setOnClickListener {
+binding.btnNextQuestion.setOnClickListener {
             evaluasiJawaban()
         }
     }

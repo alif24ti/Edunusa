@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_screen">
 
-
-    <com.google.android.material.appbar.AppBarLayout
+<com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,8 +29,7 @@
                 android:layout_height="match_parent"
                 android:paddingHorizontal="16dp">
 
-
-                <com.google.android.material.imageview.ShapeableImageView
+<com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivToolbarLogo"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
@@ -42,8 +40,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:shapeAppearanceOverlay="@style/ShapeAppearance.RoundedLogo" />
 
-
-                <LinearLayout
+<LinearLayout
                     android:id="@+id/layoutToolbarTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -76,8 +73,7 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-
-                <LinearLayout
+<LinearLayout
                     android:id="@+id/layoutToolbarActions"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -87,8 +83,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-
-                    <ImageView
+<ImageView
                         android:id="@+id/btnNavNotif"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
@@ -100,8 +95,7 @@
                         android:src="@drawable/ic_notifications"
                         app:tint="@color/primary_navy" />
 
-
-                    <com.google.android.material.imageview.ShapeableImageView
+<com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/btnNavProfile"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
@@ -114,8 +108,7 @@
                         android:src="@drawable/ic_student_avatar"
                         app:shapeAppearanceOverlay="@style/ShapeAppearance.Circle" />
 
-
-                    <ImageView
+<ImageView
                         android:id="@+id/btnNavLogout"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
@@ -133,8 +126,7 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <androidx.core.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -150,8 +142,7 @@
             android:paddingHorizontal="20dp"
             android:paddingTop="24dp">
 
-
-            <com.google.android.material.card.MaterialCardView
+<com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardLargeAvatar"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
@@ -173,8 +164,7 @@
                     tools:text="AD" />
             </com.google.android.material.card.MaterialCardView>
 
-
-            <TextView
+<TextView
                 android:id="@+id/tvProfileName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -185,8 +175,7 @@
                 android:textStyle="bold"
                 tools:text="Admin" />
 
-
-            <TextView
+<TextView
                 android:id="@+id/tvProfileStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -197,8 +186,7 @@
                 android:textColor="@color/brand_blue"
                 android:textSize="12sp" />
 
-
-            <LinearLayout
+<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
@@ -293,8 +281,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-
-            <TextView
+<TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -303,8 +290,7 @@
                 android:textColor="@color/primary_navy"
                 android:textSize="16sp" />
 
-
-            <com.google.android.material.card.MaterialCardView
+<com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAccountInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -321,8 +307,7 @@
                     android:orientation="vertical"
                     android:padding="18dp">
 
-
-                    <LinearLayout
+<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -375,8 +360,7 @@
                         android:layout_marginVertical="14dp"
                         android:background="@color/surface_gray" />
 
-
-                    <LinearLayout
+<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -429,8 +413,7 @@
                         android:layout_marginVertical="14dp"
                         android:background="@color/surface_gray" />
 
-
-                    <LinearLayout
+<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -483,8 +466,7 @@
                         android:layout_marginVertical="14dp"
                         android:background="@color/surface_gray" />
 
-
-                    <LinearLayout
+<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -534,8 +516,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
-            <TextView
+<TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -612,8 +593,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
-            <com.google.android.material.button.MaterialButton
+<com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogoutProfile"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"

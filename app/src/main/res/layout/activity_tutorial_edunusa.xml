@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/bg_screen">
 
-    <!-- Top Bar: Tombol Kembali & Lewati -->
     <ImageView
         android:id="@+id/btnBackTutorial"
         android:layout_width="48dp"
@@ -38,7 +37,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/btnBackTutorial" />
 
-    <!-- ViewPager2 untuk 3 Layar Tutorial -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerTutorial"
         android:layout_width="0dp"
@@ -48,7 +46,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnBackTutorial" />
 
-    <!-- Bottom Controls: DotsIndicator & Tombol Lanjut -->
     <LinearLayout
         android:id="@+id/layoutBottomTutorial"
         android:layout_width="0dp"
@@ -64,7 +61,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Dots Indicator Library (com.tbuonomo:dotsindicator) -->
         <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
             android:id="@+id/dotsIndicator"
             android:layout_width="wrap_content"

@@ -7,12 +7,10 @@
     android:layout_height="match_parent"
     android:background="@color/bg_screen">
 
-
-    <!-- Header Wave Background (Materi Pertemuan 9) -->
-    <View
+<View
         android:id="@+id/background_header"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="130dp"
         android:background="@drawable/bg_header_wave" />
 
     <com.google.android.material.appbar.AppBarLayout
@@ -66,7 +64,7 @@
                         android:letterSpacing="0.05"
                         android:text="EDUNUSA"
                         android:textAllCaps="true"
-                        android:textColor="@color/brand_blue"
+                        android:textColor="#EAF2FF"
                         android:textSize="10sp"
                         android:textStyle="bold" />
 
@@ -76,7 +74,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-bold"
                         android:text="Beranda"
-                        android:textColor="@color/primary_navy"
+                        android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -91,7 +89,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <!-- 0. Ikon Info Tutorial (Pertemuan 9) -->
                     <ImageView
                         android:id="@+id/btnNavInfo"
                         android:layout_width="40dp"
@@ -102,7 +99,7 @@
                         android:focusable="true"
                         android:padding="8dp"
                         android:src="@drawable/ic_info"
-                        app:tint="@color/primary_navy" />
+                        app:tint="@color/white" />
 
                     <ImageView
                         android:id="@+id/btnNavNotif"
@@ -115,7 +112,7 @@
                         android:focusable="true"
                         android:padding="8dp"
                         android:src="@drawable/ic_notifications"
-                        app:tint="@color/primary_navy" />
+                        app:tint="@color/white" />
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/btnNavProfile"
@@ -128,7 +125,9 @@
                         android:focusable="true"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_student_avatar"
-                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Circle" />
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Circle"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="1.5dp" />
 
                     <ImageView
                         android:id="@+id/btnNavLogout"
@@ -141,15 +140,14 @@
                         android:focusable="true"
                         android:padding="8dp"
                         android:src="@drawable/ic_logout"
-                        app:tint="@color/error_red" />
+                        app:tint="@color/white" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <androidx.core.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -164,8 +162,7 @@
             android:paddingHorizontal="18dp"
             android:paddingTop="16dp">
 
-
-            <com.google.android.material.card.MaterialCardView
+<com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardGreeting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -290,7 +287,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Menu Kategori Belajar dengan GridLayout (Materi Pertemuan 9) -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -309,7 +305,6 @@
                 app:columnCount="3"
                 app:useDefaultMargins="true">
 
-                <!-- 1. Matematika (btnMenuMath) -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnMenuMath"
                     style="@style/Widget.Material3.Button.TonalButton"
@@ -328,7 +323,6 @@
                     app:layout_columnWeight="1"
                     app:layout_gravity="fill_horizontal" />
 
-                <!-- 2. IPA (btnMenuIPA) -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnMenuIPA"
                     style="@style/Widget.Material3.Button.TonalButton"
@@ -347,7 +341,6 @@
                     app:layout_columnWeight="1"
                     app:layout_gravity="fill_horizontal" />
 
-                <!-- 3. B. Indonesia (btnMenuIndo) -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnMenuIndo"
                     style="@style/Widget.Material3.Button.TonalButton"
@@ -366,7 +359,6 @@
                     app:layout_columnWeight="1"
                     app:layout_gravity="fill_horizontal" />
 
-                <!-- 4. B. Inggris (btnMenuEng) -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnMenuEng"
                     style="@style/Widget.Material3.Button.TonalButton"
@@ -385,7 +377,6 @@
                     app:layout_columnWeight="1"
                     app:layout_gravity="fill_horizontal" />
 
-                <!-- 5. Sejarah (btnMenuHistory) -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnMenuHistory"
                     style="@style/Widget.Material3.Button.TonalButton"
@@ -404,7 +395,6 @@
                     app:layout_columnWeight="1"
                     app:layout_gravity="fill_horizontal" />
 
-                <!-- 6. Koding (btnMenuCode) -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnMenuCode"
                     style="@style/Widget.Material3.Button.TonalButton"
@@ -544,8 +534,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
-            <TextView
+<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -602,8 +591,7 @@
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
-
-            <com.google.android.material.tabs.TabLayout
+<com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayoutMateri"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
@@ -625,8 +613,7 @@
                     android:text="Terbaru" />
             </com.google.android.material.tabs.TabLayout>
 
-
-            <ListView
+<ListView
                 android:id="@+id/listMateri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -21,8 +21,6 @@
     <color name="accent_yellow_light">#FEF3C7</color>
     <color name="nav_active">#3378F7</color>
     <color name="nav_inactive">#8898AA</color>
-    
-    <!-- Warna Baru Pertemuan 9 (Tutorial & Komponen) -->
     <color name="tutorial_blue">#EAF2FF</color>
     <color name="tutorial_green">#E8F5E9</color>
     <color name="tutorial_teal">#E0F2F1</color>

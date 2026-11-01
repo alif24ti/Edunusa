@@ -40,8 +40,7 @@ class MateriAdapter(
         binding.tvProgress.text = "Progres ${item.progress}%"
         binding.progressBarMateri.progress = item.progress
 
-
-        if (item.imageUrl.isNotEmpty()) {
+if (item.imageUrl.isNotEmpty()) {
             Glide.with(context)
                 .load(item.imageUrl)
                 .placeholder(R.drawable.logo_edunusa)
@@ -51,8 +50,7 @@ class MateriAdapter(
             binding.imgThumbnail.setImageResource(R.drawable.logo_edunusa)
         }
 
-
-        view.setOnClickListener {
+view.setOnClickListener {
             val intent = Intent(context, DetailMateriActivity::class.java).apply {
                 putExtra("EXTRA_SUBJECT", item.subject)
                 putExtra("EXTRA_MODUL", item.modulInfo)

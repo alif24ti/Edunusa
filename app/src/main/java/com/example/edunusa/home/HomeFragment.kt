@@ -46,11 +46,9 @@ class HomeFragment : Fragment() {
         val sharedPref = requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val username = sharedPref.getString("username", "Siswa") ?: "Siswa"
 
-        // Setup Toolbar Resmi Dosen
         (requireActivity() as? AppCompatActivity)?.setSupportActionBar(binding.toolbar)
         (requireActivity() as? AppCompatActivity)?.supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        // Setup MenuProvider Resmi Dosen
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.main_menu, menu)
@@ -71,7 +69,6 @@ class HomeFragment : Fragment() {
             }
         }, viewLifecycleOwner)
 
-        // Setup Klik Aksi Navbar Atas (Toolbar)
         binding.btnNavInfo.setOnClickListener {
             val intent = Intent(requireContext(), TutorialEduNusaActivity::class.java)
             startActivity(intent)
@@ -88,10 +85,8 @@ class HomeFragment : Fragment() {
 
         binding.tvGreetingName.text = "Halo, $username!"
 
-        // Menu Kategori Belajar dengan GridLayout (Pertemuan 9)
         setupGridLayoutMenu()
 
-        // Event listener Lanjutkan Belajar
         binding.btnContinueLearning.setOnClickListener {
             bukaDetailPelajaran(
                 subject = "Matematika",
@@ -107,7 +102,6 @@ class HomeFragment : Fragment() {
         initMateriData()
         updateListView(allMateriList)
 
-        // ChipGroup Filter Materi Sesuai Modul Dosen
         binding.chipGroupFilter.setOnCheckedStateChangeListener { group, checkedIds ->
             val selectedId = checkedIds.firstOrNull()
             if (selectedId != null) {
@@ -124,7 +118,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-        // TabLayout Listener
         binding.tabLayoutMateri.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab?.position == 1) {

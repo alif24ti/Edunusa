@@ -40,7 +40,6 @@ class ProgresFragment : Fragment() {
         (requireActivity() as? AppCompatActivity)?.setSupportActionBar(binding.toolbar)
         (requireActivity() as? AppCompatActivity)?.supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        // Setup MenuProvider Resmi Dosen
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.notif_menu, menu)
@@ -61,8 +60,8 @@ class ProgresFragment : Fragment() {
             }
         }, viewLifecycleOwner)
 
-        binding.btnNavNotif.setOnClickListener {
-            (activity as? BaseActivity)?.pindahTab(R.id.progres)
+        binding.btnNavDownload.setOnClickListener {
+            Toast.makeText(requireContext(), "Mengunduh Rapor Progres Belajar (PDF)...", Toast.LENGTH_SHORT).show()
         }
         binding.btnNavProfile.setOnClickListener {
             (activity as? BaseActivity)?.pindahTab(R.id.profil)
@@ -71,13 +70,11 @@ class ProgresFragment : Fragment() {
             showLogoutDialog()
         }
 
-
-        binding.btnDownloadReport.setOnClickListener {
+binding.btnDownloadReport.setOnClickListener {
             Toast.makeText(requireContext(), "Mengunduh Rapor Belajar EduNusa (PDF)...", Toast.LENGTH_SHORT).show()
         }
 
-
-        setupPencapaianListView()
+setupPencapaianListView()
     }
 
     private fun setupPencapaianListView() {

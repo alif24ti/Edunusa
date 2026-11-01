@@ -43,8 +43,7 @@ class PencapaianAdapter(
             binding.imgPencapaian.setColorFilter(ContextCompat.getColor(context, item.iconColor))
         }
 
-
-        if (item.isNew) {
+if (item.isNew) {
             binding.cardPencapaianRoot.setCardBackgroundColor(ContextCompat.getColor(context, R.color.light_surface))
             binding.badgeStatus.setBackgroundResource(R.drawable.bg_badge_yellow)
             binding.badgeStatus.setTextColor(ContextCompat.getColor(context, R.color.warning_orange))

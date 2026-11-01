@@ -9,5 +9,5 @@
         android:id="@+id/action_download_report"
         android:icon="@drawable/ic_download"
         android:title="Unduh Rapor"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 </menu>

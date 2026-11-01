@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Izin Akses Internet untuk Glide & API -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Edunusa">
 
-        <!-- 1. SplashScreenActivity sebagai Main Launcher -->
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
@@ -25,35 +23,29 @@
             </intent-filter>
         </activity>
 
-        <!-- 2. LoginActivity -->
         <activity
             android:name=".LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- 3. BaseActivity (Container 4 Fragment Utama) -->
         <activity
             android:name=".BaseActivity"
             android:exported="false" />
 
-        <!-- 4. DetailMateriActivity -->
         <activity
             android:name=".DetailMateriActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- 5. KuisActivity -->
         <activity
             android:name=".KuisActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- 6. TutorialEduNusaActivity (Pertemuan 9 - ViewPager2 & DotsIndicator) -->
         <activity
             android:name=".tutorial.TutorialEduNusaActivity"
             android:exported="false" />
 
-        <!-- Preloaded Fonts Standar Praktikum -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

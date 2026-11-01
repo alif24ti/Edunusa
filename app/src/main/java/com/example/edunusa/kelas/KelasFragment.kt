@@ -36,12 +36,10 @@ class KelasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        (requireActivity() as? AppCompatActivity)?.setSupportActionBar(binding.toolbar)
+(requireActivity() as? AppCompatActivity)?.setSupportActionBar(binding.toolbar)
         (requireActivity() as? AppCompatActivity)?.supportActionBar?.setDisplayShowTitleEnabled(false)
 
-
-        binding.btnNavNotif.setOnClickListener {
+binding.btnNavNotif.setOnClickListener {
             (activity as? BaseActivity)?.pindahTab(R.id.progres)
         }
         binding.btnNavProfile.setOnClickListener {
@@ -51,14 +49,12 @@ class KelasFragment : Fragment() {
             showLogoutDialog()
         }
 
-
-        Glide.with(this)
+Glide.with(this)
             .load("https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&q=80")
             .placeholder(R.drawable.logo_edunusa)
             .into(binding.imgBannerMath)
 
-
-        binding.btnLihatMateriMath.setOnClickListener {
+binding.btnLihatMateriMath.setOnClickListener {
             bukaDetailMateri(
                 subject = "Matematika",
                 modul = "Modul 3 dari 12",
@@ -70,8 +66,7 @@ class KelasFragment : Fragment() {
             )
         }
 
-
-        setupSimpleAdapterCatalog()
+setupSimpleAdapterCatalog()
     }
 
     private fun setupSimpleAdapterCatalog() {
