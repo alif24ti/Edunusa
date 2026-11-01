@@ -4,10 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import com.example.edunusa.BaseActivity
 import com.example.edunusa.DetailMateriActivity
@@ -33,10 +37,33 @@ class ProfilFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         (requireActivity() as? AppCompatActivity)?.setSupportActionBar(binding.toolbar)
         (requireActivity() as? AppCompatActivity)?.supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        // Setup MenuProvider Resmi Dosen
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.profil_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.action_edit_profile -> {
+                        Toast.makeText(requireContext(), "Fitur Edit Profil segera hadir", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.action_settings -> {
+                        Toast.makeText(requireContext(), "Pengaturan Aplikasi EduNusa", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.action_logout -> {
+                        showLogoutDialog()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner)
 
         binding.btnNavNotif.setOnClickListener {
             (activity as? BaseActivity)?.pindahTab(R.id.progres)

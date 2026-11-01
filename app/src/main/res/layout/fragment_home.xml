@@ -8,18 +8,25 @@
     android:background="@color/bg_screen">
 
 
+    <!-- Header Wave Background (Materi Pertemuan 9) -->
+    <View
+        android:id="@+id/background_header"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@drawable/bg_header_wave" />
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:elevation="2dp">
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:background="@color/white"
+            android:background="@android:color/transparent"
             app:contentInsetEnd="0dp"
             app:contentInsetLeft="0dp"
             app:contentInsetRight="0dp"
@@ -29,7 +36,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="16dp">
-
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivToolbarLogo"
@@ -41,7 +47,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:shapeAppearanceOverlay="@style/ShapeAppearance.RoundedLogo" />
-
 
                 <LinearLayout
                     android:id="@+id/layoutToolbarTitle"
@@ -76,7 +81,6 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:id="@+id/layoutToolbarActions"
                     android:layout_width="wrap_content"
@@ -87,11 +91,24 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
+                    <!-- 0. Ikon Info Tutorial (Pertemuan 9) -->
+                    <ImageView
+                        android:id="@+id/btnNavInfo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:contentDescription="Tutorial &amp; Panduan"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/primary_navy" />
 
                     <ImageView
                         android:id="@+id/btnNavNotif"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:layout_marginStart="2dp"
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:clickable="true"
                         android:contentDescription="Notifikasi &amp; Progres"
@@ -99,7 +116,6 @@
                         android:padding="8dp"
                         android:src="@drawable/ic_notifications"
                         app:tint="@color/primary_navy" />
-
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/btnNavProfile"
@@ -113,7 +129,6 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_student_avatar"
                         app:shapeAppearanceOverlay="@style/ShapeAppearance.Circle" />
-
 
                     <ImageView
                         android:id="@+id/btnNavLogout"
@@ -275,6 +290,139 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Menu Kategori Belajar dengan GridLayout (Materi Pertemuan 9) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-bold"
+                android:text="🎯 Menu Belajar Cepat"
+                android:textColor="@color/primary_navy"
+                android:textSize="16sp" />
+
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/gridMenuBelajar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:padding="12dp"
+                app:columnCount="3"
+                app:useDefaultMargins="true">
+
+                <!-- 1. Matematika (btnMenuMath) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMenuMath"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingVertical="10dp"
+                    android:text="Matematika"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:icon="@drawable/ic_calculate"
+                    app:iconGravity="top"
+                    app:iconSize="20dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <!-- 2. IPA (btnMenuIPA) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMenuIPA"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingVertical="10dp"
+                    android:text="IPA"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:icon="@drawable/ic_science"
+                    app:iconGravity="top"
+                    app:iconSize="20dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <!-- 3. B. Indonesia (btnMenuIndo) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMenuIndo"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingVertical="10dp"
+                    android:text="B. Indonesia"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:icon="@drawable/ic_book"
+                    app:iconGravity="top"
+                    app:iconSize="20dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <!-- 4. B. Inggris (btnMenuEng) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMenuEng"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingVertical="10dp"
+                    android:text="B. Inggris"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:icon="@drawable/ic_book"
+                    app:iconGravity="top"
+                    app:iconSize="20dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <!-- 5. Sejarah (btnMenuHistory) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMenuHistory"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingVertical="10dp"
+                    android:text="Sejarah"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:icon="@drawable/ic_bookmark"
+                    app:iconGravity="top"
+                    app:iconSize="20dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <!-- 6. Koding (btnMenuCode) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMenuCode"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingVertical="10dp"
+                    android:text="Koding"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:icon="@drawable/ic_lightbulb"
+                    app:iconGravity="top"
+                    app:iconSize="20dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+            </androidx.gridlayout.widget.GridLayout>
 
             <TextView
                 android:layout_width="wrap_content"

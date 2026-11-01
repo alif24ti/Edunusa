@@ -48,6 +48,16 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- 6. TutorialEduNusaActivity (Pertemuan 9 - ViewPager2 & DotsIndicator) -->
+        <activity
+            android:name=".tutorial.TutorialEduNusaActivity"
+            android:exported="false" />
+
+        <!-- Preloaded Fonts Standar Praktikum -->
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

@@ -4,11 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import com.example.edunusa.BaseActivity
 import com.example.edunusa.LoginActivity
@@ -33,10 +37,29 @@ class ProgresFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         (requireActivity() as? AppCompatActivity)?.setSupportActionBar(binding.toolbar)
         (requireActivity() as? AppCompatActivity)?.supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        // Setup MenuProvider Resmi Dosen
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.notif_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.action_mark_all -> {
+                        Toast.makeText(requireContext(), "Semua notifikasi pencapaian ditandai telah dibaca", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.action_download_report -> {
+                        Toast.makeText(requireContext(), "Mengunduh Rapor Progres Belajar (PDF)...", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner)
 
         binding.btnNavNotif.setOnClickListener {
             (activity as? BaseActivity)?.pindahTab(R.id.progres)

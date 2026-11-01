@@ -4,17 +4,23 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import com.example.edunusa.BaseActivity
 import com.example.edunusa.DetailMateriActivity
 import com.example.edunusa.LoginActivity
 import com.example.edunusa.R
 import com.example.edunusa.databinding.FragmentHomeBinding
+import com.example.edunusa.tutorial.TutorialEduNusaActivity
+import com.google.android.material.chip.Chip
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 
@@ -37,15 +43,39 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val sharedPref = requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val username = sharedPref.getString("username", "Siswa") ?: "Siswa"
 
-
+        // Setup Toolbar Resmi Dosen
         (requireActivity() as? AppCompatActivity)?.setSupportActionBar(binding.toolbar)
         (requireActivity() as? AppCompatActivity)?.supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        // Setup MenuProvider Resmi Dosen
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.main_menu, menu)
+            }
 
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.action_notif -> {
+                        (activity as? BaseActivity)?.pindahTab(R.id.progres)
+                        true
+                    }
+                    R.id.action_profil -> {
+                        (activity as? BaseActivity)?.pindahTab(R.id.profil)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner)
+
+        // Setup Klik Aksi Navbar Atas (Toolbar)
+        binding.btnNavInfo.setOnClickListener {
+            val intent = Intent(requireContext(), TutorialEduNusaActivity::class.java)
+            startActivity(intent)
+        }
         binding.btnNavNotif.setOnClickListener {
             (activity as? BaseActivity)?.pindahTab(R.id.progres)
         }
@@ -56,42 +86,45 @@ class HomeFragment : Fragment() {
             showLogoutDialog()
         }
 
-
         binding.tvGreetingName.text = "Halo, $username!"
 
+        // Menu Kategori Belajar dengan GridLayout (Pertemuan 9)
+        setupGridLayoutMenu()
 
+        // Event listener Lanjutkan Belajar
         binding.btnContinueLearning.setOnClickListener {
-            val intent = Intent(requireContext(), DetailMateriActivity::class.java).apply {
-                putExtra("EXTRA_SUBJECT", "Matematika")
-                putExtra("EXTRA_MODUL", "Modul 3 dari 12")
-                putExtra("EXTRA_TITLE", "Matematika: Pecahan Sederhana")
-                putExtra("EXTRA_DESC", "Pelajari konsep pecahan dasar, menyamakan penyebut, hingga operasi hitung pecahan.")
-                putExtra("EXTRA_DURATION", "⏱ 45 Menit")
-                putExtra("EXTRA_LEVEL", "SMP Kelas 7")
-                putExtra("EXTRA_RATING", 4.9)
-            }
-            startActivity(intent)
+            bukaDetailPelajaran(
+                subject = "Matematika",
+                modul = "Modul 3 dari 12",
+                title = "Matematika: Pecahan Sederhana",
+                desc = "Pelajari konsep pecahan dasar, menyamakan penyebut, hingga operasi hitung pecahan.",
+                duration = "⏱ 45 Menit",
+                level = "SMP Kelas 7",
+                rating = 4.9
+            )
         }
-
 
         initMateriData()
         updateListView(allMateriList)
 
-
-        binding.chipGroupFilter.setOnCheckedStateChangeListener { _, checkedIds ->
-            if (checkedIds.isEmpty()) {
+        // ChipGroup Filter Materi Sesuai Modul Dosen
+        binding.chipGroupFilter.setOnCheckedStateChangeListener { group, checkedIds ->
+            val selectedId = checkedIds.firstOrNull()
+            if (selectedId != null) {
+                val chip = group.findViewById<Chip>(selectedId)
+                Toast.makeText(requireContext(), "Filter Materi: ${chip.text}", Toast.LENGTH_SHORT).show()
+                when (selectedId) {
+                    R.id.chipMatematika -> updateListView(allMateriList.filter { it.subject == "Matematika" })
+                    R.id.chipIndo -> updateListView(allMateriList.filter { it.subject == "Bahasa Indonesia" })
+                    R.id.chipIPA -> updateListView(allMateriList.filter { it.subject == "IPA" })
+                    else -> updateListView(allMateriList)
+                }
+            } else {
                 updateListView(allMateriList)
-                return@setOnCheckedStateChangeListener
-            }
-            when (checkedIds[0]) {
-                R.id.chipMatematika -> updateListView(allMateriList.filter { it.subject == "Matematika" })
-                R.id.chipIndo -> updateListView(allMateriList.filter { it.subject == "Bahasa Indonesia" })
-                R.id.chipIPA -> updateListView(allMateriList.filter { it.subject == "IPA" })
-                else -> updateListView(allMateriList)
             }
         }
 
-
+        // TabLayout Listener
         binding.tabLayoutMateri.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab?.position == 1) {
@@ -103,6 +136,102 @@ class HomeFragment : Fragment() {
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
+    }
+
+    private fun setupGridLayoutMenu() {
+        binding.btnMenuMath.setOnClickListener {
+            bukaDetailPelajaran(
+                subject = "Matematika",
+                modul = "Modul 3 dari 12",
+                title = "Matematika: Pecahan Sederhana",
+                desc = "Pelajari konsep pecahan dasar, menyamakan penyebut, hingga operasi hitung pecahan.",
+                duration = "⏱ 45 Menit",
+                level = "SMP Kelas 7",
+                rating = 4.9
+            )
+        }
+
+        binding.btnMenuIPA.setOnClickListener {
+            bukaDetailPelajaran(
+                subject = "IPA",
+                modul = "Modul 4 dari 16",
+                title = "IPA: Klasifikasi Makhluk Hidup & Ekosistem",
+                desc = "Karakteristik biotik dan abiotik dalam lingkungan hidup sekitar.",
+                duration = "⏱ 50 Menit",
+                level = "SMP Kelas 7",
+                rating = 4.9
+            )
+        }
+
+        binding.btnMenuIndo.setOnClickListener {
+            bukaDetailPelajaran(
+                subject = "Bahasa Indonesia",
+                modul = "Modul 2 dari 10",
+                title = "Bahasa Indonesia: Teks Deskripsi",
+                desc = "Menulis dan memahami objek teks deskriptif secara lugas dan terstruktur.",
+                duration = "⏱ 35 Menit",
+                level = "SMP Kelas 7",
+                rating = 4.8
+            )
+        }
+
+        binding.btnMenuEng.setOnClickListener {
+            bukaDetailPelajaran(
+                subject = "Bahasa Inggris",
+                modul = "Modul 1 dari 8",
+                title = "Bahasa Inggris: Greetings & Daily Conversation",
+                desc = "Percakapan sehari-hari bahasa Inggris untuk siswa SMP tingkat dasar.",
+                duration = "⏱ 40 Menit",
+                level = "SMP Kelas 7",
+                rating = 4.7
+            )
+        }
+
+        binding.btnMenuHistory.setOnClickListener {
+            bukaDetailPelajaran(
+                subject = "Sejarah",
+                modul = "Modul 2 dari 6",
+                title = "Sejarah: Perjuangan Kemerdekaan Indonesia",
+                desc = "Memahami peristiwa penting menjelang proklamasi kemerdekaan Republik Indonesia.",
+                duration = "⏱ 35 Menit",
+                level = "SMP Kelas 7",
+                rating = 4.8
+            )
+        }
+
+        binding.btnMenuCode.setOnClickListener {
+            bukaDetailPelajaran(
+                subject = "Koding",
+                modul = "Modul 1 dari 10",
+                title = "Koding: Pengenalan Logika & Algoritma",
+                desc = "Dasar berpikir komputasional, percabangan logika, dan perulangan.",
+                duration = "⏱ 45 Menit",
+                level = "SMP Kelas 7",
+                rating = 5.0
+            )
+        }
+    }
+
+    private fun bukaDetailPelajaran(
+        subject: String,
+        modul: String,
+        title: String,
+        desc: String,
+        duration: String,
+        level: String,
+        rating: Double
+    ) {
+        Toast.makeText(requireContext(), "Membuka Menu: $subject", Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), DetailMateriActivity::class.java).apply {
+            putExtra("EXTRA_SUBJECT", subject)
+            putExtra("EXTRA_MODUL", modul)
+            putExtra("EXTRA_TITLE", title)
+            putExtra("EXTRA_DESC", desc)
+            putExtra("EXTRA_DURATION", duration)
+            putExtra("EXTRA_LEVEL", level)
+            putExtra("EXTRA_RATING", rating)
+        }
+        startActivity(intent)
     }
 
     private fun initMateriData() {
